@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Liste des Paiements</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content><!--
+<ion-item>
+  <ion-label position="floating">Mode de Paiement :</ion-label>
+  <ion-input  placeholder="saisir le mode" [(ngModel)]="mode" type="text" #txtmode></ion-input>
+</ion-item>-->
+<div >
+  <ion-card  button *ngFor="let p of listePaiement" >
+    <ion-card-content>
+      <h2>Date : {{p[0].date|date:'dd/MM/YYYY  HH:mm'}}</h2>
+      <h2>Nom Complet de client : {{p[0].factures[0].client.nom}} {{p[0].factures[0].client.prenom}}</h2>
+      <h2 >Montant payé : {{p[0].totalMontant}}  </h2>
+      <h2>Mode de Paiement : {{p[0].mode}}</h2><br>
+      <h2> Les Factures Payés : </h2>
+
+    <ion-card-content >
+      <h2 *ngFor="let f of p[0].factures">Référence Facture: {{f.referenceFact}} </h2><br>
+    </ion-card-content>
+
+
+  </ion-card-content>
+    </ion-card>
+  </div>
+    <h4 *ngIf="listePaiement.length === 0" >La liste est Vide</h4>
+<ion-footer>
+  <ion-toolbar>
+   <ion-button >
+     <ion-icon slot="icon-only" name="add"></ion-icon>
+  Transférer Paiements
+   </ion-button>
+
+   </ion-toolbar>
+</ion-footer>
+</ion-content>

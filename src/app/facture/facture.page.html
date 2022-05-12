@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>facture</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Chercher Facture par : </ion-label>
+    <ion-select value="choisissez un référence" okText="Ok" cancelText="Non"  [(ngModel)]="selectedReference" >
+      <ion-select-option *ngFor="let u of listeReference" value="{{u.value}}">{{u.label}}</ion-select-option>
+    </ion-select>
+
+  </ion-item><br>
+  <ion-item>
+    <ion-label stacked>Valeur : </ion-label>
+  <ion-input type="number" [(ngModel)]="reference" text-right id="input"></ion-input>
+</ion-item>
+<br>
+  <ion-button  (click)="chercherfacture()">
+    <ion-icon slot="icon-only" name="search"></ion-icon> Chercher
+  </ion-button>
+<br>
+    <ion-button   (click)="addData()">
+      <ion-icon slot="icon-only" name="add"></ion-icon> Récupérer les Factures
+    </ion-button>
+
+
+<ion-list>
+ <ion-list>
+
+   <ion-item-sliding *ngFor="let facture of listData; let  i = index;" >
+
+<ion-card>
+      <ion-card-header>
+        <ion-checkbox [(ngModel)]="facture.isselected" ></ion-checkbox>
+        <ion-card-title>
+          Nom de Client: {{facture.client.nom}} {{facture.client.prenom}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h4>Adresse : Ghardeya 8066</h4>
+
+        <h4>Référence Facture: {{facture.referenceFact}}</h4>
+
+        <h4>Montant: {{facture.montant}} DT</h4>
+
+        <h4>Etat: {{facture.etat}} </h4>
+
+      </ion-card-content>
+
+      </ion-card>
+
+
+
+
+   </ion-item-sliding>
+ </ion-list>
+
+
+</ion-list>
+<ion-button *ngIf="listData"   expand="full" (click)="openModal()">Payer</ion-button>
+</ion-content>

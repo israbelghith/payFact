@@ -1,0 +1,40 @@
+<!-- my-modal.page.html -->
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start" (click)="closeModal()">
+      <ion-back-button></ion-back-button>
+   <p color="primary">Back</p>
+    </ion-buttons>
+    <ion-title>Paiement des Factures</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+      <ion-item>
+
+          <ion-label position="floating">Mode de Paiement :</ion-label>
+          <ion-input  placeholder="saisir le mode" [(ngModel)]="mode" type="text" #txtmode></ion-input>
+
+      </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+    </ion-row>
+  </ion-grid>
+
+    <ion-toolbar>
+     <ion-button (click)="ajouterPaiement()">
+       <ion-icon slot="icon-only" name="add"></ion-icon>
+       Ajouter
+     </ion-button>
+     </ion-toolbar>
+
+</ion-content>
