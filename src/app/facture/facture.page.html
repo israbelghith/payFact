@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <ion-item>
     <ion-label>Chercher Facture par : </ion-label>
     <ion-select value="choisissez un référence" okText="Ok" cancelText="Non"  [(ngModel)]="selectedReference" >
@@ -23,11 +23,11 @@
   <ion-button  (click)="chercherfacture()">
     <ion-icon slot="icon-only" name="search"></ion-icon> Chercher
   </ion-button>
-<br>
+<br><!--
     <ion-button   (click)="addData()">
       <ion-icon slot="icon-only" name="add"></ion-icon> Récupérer les Factures
     </ion-button>
-
+-->
 
 <ion-list>
  <ion-list>
@@ -62,5 +62,5 @@
 
 
 </ion-list>
-<ion-button *ngIf="listData"   expand="full" (click)="openModal()">Payer</ion-button>
+<ion-button *ngIf="listData"   expand="full" (click)="ajouterPaiement()">Payer</ion-button>
 </ion-content>

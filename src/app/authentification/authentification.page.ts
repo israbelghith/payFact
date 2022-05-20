@@ -7,6 +7,8 @@ import { Role } from '../model/Role';
 import { UtilisateurService } from '../services/utilisateur.service';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
+import { DataService } from '../services/data.service';
+import { Agent } from '../model/agent.model';
 @Component({
   selector: 'app-authentification',
   templateUrl: './authentification.page.html',
@@ -14,7 +16,7 @@ import { AuthentificationService } from '../services/authentification.service';
 })
 export class AuthentificationPage implements OnInit {
   utilisateur = new Utilisateur();
-  u=new Utilisateur();
+  u=new Agent();
   err= 0;
   display = false;
   r=new Role(1,'admin');
@@ -28,7 +30,8 @@ export class AuthentificationPage implements OnInit {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private router: Router,
     private authentifierService: AuthentificationService,
-    private utilisateurService: UtilisateurService)
+    private utilisateurService: UtilisateurService,
+    private dataService: DataService)
      { }
 
   ngOnInit(): void {
@@ -41,24 +44,22 @@ export class AuthentificationPage implements OnInit {
     this.authentifierService.saveToken(jwToken);
     this.utilisateurService.chercherParEmail(this.utilisateur.email).
     subscribe( agt =>{ this.u = agt;
-
+    this.dataService.addAgent(agt);
+this.authentifierService.saveSecteur(agt.secteur);
     if(this.u.role.role==='agent'){
       this.router.navigate(['/folder/:id']);
-      //console.log("in if",this.u.role.role);
     }
 
   else{
       this.router.navigate(['/authentification']);
-      //console.log("in else",this.u.role.role);
-  }
+      }
   console.log(this.u.role);
-
   }) ;
 
 
 });
-}
 
+}
 
 
 }

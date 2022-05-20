@@ -15,6 +15,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { Drivers } from '@ionic/storage';
 import * as CordovaSQLiteDriver from 'localforage';
 import { JwtIntercepterService } from './services/jwt-intercepter.service';
+//import { Network } from '@ionic-native/network';
 //import CordovaSQLiteDriver from 'localforage';
 //import {CordovaSQLiteDriver} from 'localforage-cordovasqlitedriver';
 @NgModule({
@@ -29,7 +30,9 @@ import { JwtIntercepterService } from './services/jwt-intercepter.service';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtIntercepterService,
       multi: true
-    },],
+    },
+  //  Network
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

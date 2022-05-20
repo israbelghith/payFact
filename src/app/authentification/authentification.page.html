@@ -1,23 +1,38 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Authentifier</ion-title>
+<ion-header  class="back-img">
+  <ion-toolbar  color="medium" >
+    <ion-title>  <h4>PayAgent </h4></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="back-img" >
 
+    <ion-grid  >
+      <ion-row  class="background1" color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="6" size-xs="12">
+          <div text-center>
+<br><br><br>
+          </div>
+          <ion-card >
+            <ion-card-content>
+          <div padding>
 
-    <div class="input-group">
-      <ion-item>
-        <ion-input type="email" placeholder="Email" [(ngModel)]="utilisateur.email"></ion-input>
-      </ion-item>
+            <ion-item>
+              <ion-label position="floating">Email </ion-label>
+              <ion-input type="email" placeholder="exemple@gmail.com" [(ngModel)]="utilisateur.email"></ion-input>
+            </ion-item>
 
-      <ion-item>
-        <ion-input type="password" placeholder="Password" [(ngModel)]="utilisateur.motDePasse"></ion-input>
-      </ion-item>
+            <ion-item>
+              <ion-label position="floating">Mot de Passe  </ion-label>
+              <ion-input type="password" placeholder="Insérer au moins 3 caractères" [(ngModel)]="utilisateur.motDePasse"></ion-input>
+            </ion-item>
 
-    </div>
-<br>
-<br><br><br>    <ion-button type="submit" (onclick)="connection()">Log in</ion-button>
+          </div><br><br><br>
+          <ion-button color="success" shape="round" (click)="connection()" expand="full"><ion-icon  name="log-in"></ion-icon> Connecter</ion-button>
+        </ion-card-content>
+        </ion-card>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
 
 </ion-content>
+

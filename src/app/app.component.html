@@ -1,17 +1,25 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-content >
         <ion-list id="inbox-list">
-          <ion-list-header>   Menu</ion-list-header>
+          <ion-list-header>MENU</ion-list-header>
 
+          <ion-item>
+            <ion-icon name="user"></ion-icon>
+            <ion-img src="../../assets/icon/user5.jpeg"></ion-img>
+            {{agt.__zone_symbol__value.email}}
+          </ion-item>
+          <ion-menu-toggle  auto-hide="false" *ngFor="let p of appPages; let i = index">
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+              <ion-label >{{ p.title }}</ion-label>
             </ion-item>
+
           </ion-menu-toggle>
+
+         <ion-item (click)="deconnecter()">  <ion-icon  name="log-out"></ion-icon> Déconnecter</ion-item>
         </ion-list>
 
 

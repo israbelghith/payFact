@@ -41,7 +41,7 @@ lister(){
   // eslint-disable-next-line prefer-const
   let listPaiement= [];
   this.storage.forEach((v,k) => {
-    if(k!== 'myFactureListe')
+    if(k!== 'myFactureListe' && k!== 'agent')
     {
       listPaiement.push(v);
     }
@@ -67,6 +67,13 @@ lister(){
     }
    });
  // this.storage.remove(key);
+}
+async deleteAll()
+{
+ // const storedData= await this.storage.get('myFactureListe') || [];
+  this.storage.forEach((v,k) => {
+    this.storage.remove(k);
+   });
 }
 
 }
